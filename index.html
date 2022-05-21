@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>중하하 생성기</title>
+    <meta name="title" content="중하하 생성기" />
+    <meta name="description" content="중끼얏호우~!" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        body,html{
+            padding:0;
+            margin:0;
+            width:100%;
+            height:100%;
+            
+        }
+
+        body{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #maker{
+            width:90%;
+            max-width:600px;
+        }
+
+        #maker .card-title{
+            font-weight: 600;
+            color:#000;
+        }
+
+        .hide{
+            display:none;
+        }
+        #output{
+            font-size: 0.8em;
+        }
+
+    </style>
+</head>
+
+<body class=" blue-grey darken-1">
+            <div class="card" id="maker">
+                <div class="card-image">
+                    <img src="selfzzal.png" alt="헤더 이미지">
+                    <span class="card-title bold">중하하 생성기</span>
+                  </div>
+                <div class="card-content">
+                    <p>당신만의 중하하를 생성하세요.</p>
+                    <div class="input-field output-wrap hide">
+                        <textarea id="output" class="materialize-textarea"></textarea>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <a class="waves-effect waves-light btn" id="make" href="#">생성</a>
+                    <a class="waves-effect waves-light btn" id="copy" href="#" disabled>복사</a>
+                </div>
+
+            </div>
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>        
+        Math.randomInt = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a
+        Array.prototype.random = function ({ exe = false, st = 1, en = 1, param } = {}) {
+            let rslt = ""
+            for (let i = 0; i < Math.randomInt(st, en); i++) {
+                let target = this[Math.randomInt(0, this.length - 1)]
+                if (typeof target === "function" && exe === true) rslt += target(param);
+                else if (typeof target === "function") return target
+                else rslt += target
+            }
+            return rslt
+        }
+        String.prototype.random = function (a, b) { return this.repeat(Math.randomInt(a, b)) }
+        let jung = [
+            () => `${["찌", "쭈", "쭤"].random()}${"우".random(0, 4)}웅`]
+        let ha = [
+            (st) => "中" + "下".random(20, 30),
+            (st, accent) => st + `기덕${accent('long')} 끈${accent('bold')} 더${"러".random(10, 15)}${accent('long')}`,
+            (st, accent) => st + `${"하".random(20, 30)}${accent()}`,
+            (st, accent) => st + [`끼${"이".random(5, 10)}익`, `꾸익`.random(3, 5)].random() + accent(),
+            (st, accent) => st + "으후루꾸꾸루후으".random(2, 5),
+            (st, accent) => st + ["꾸왁", "꾸웍"].map(str => str.random(3, 5)).random(2, 5),
+            (st, accent) => st + `끼${"야".random(20, 30)}악` + accent(),
+            (st, accent) => st + `아잇${accent("bold")} 푸르르르르${accent("long")}`,
+            (st, accent) => st + ["월", "멍", "컹"].map(str => str.random(15, 20)).random() + accent(),
+            (st, accent) => st + `${"끼룩".random(5, 10)}${accent()}`,
+            (st, accent) => st + `뿌${"오".random(10, 15)}웅` + accent(),
+            (st, accent) => st + `뽀${"오".random(10, 15)}옹` + accent('long'),
+            (st, accent) => st + `뽀르${"삐리".random(3, 5)}립` + accent('bold'),
+            (st, accent) => `중중중${accent("bold")}하하하${accent("long")}`,
+            (st, accent) => st + ["끼릭", "끼리릭", "까드득", "까드득"].random({ st: 5, en: 10 }) + accent(),
+            (st, accent) => st + ["낄".random(5, 8), "헤".random(5, 8) + "헷"].random() + accent('long'),
+            (st, accent) => st + "허".random(10, 12) + "헛~ 허헛~" + accent('long'),
+            (st, accent) => st + `우${"꾸".random(5, 7)}${"까".random(5, 7)}` + accent('long'),
+            (st, accent) => st + ["개골", "개굴"].random({ st: 5, en: 10 }),
+            (st, accent) => st + `오${"고".random(10, 15)}곡` + accent('hatena'),
+            (st, accent) => `${["중", "쭝"].random()}기${"이".random(10, 15)}잇` + accent('long') + accent('hatena'),
+            (st, accent) => `${["중", "쭝"].random()}따단${accent('bold')}(따${"다".random(3, 5)}단${accent('bold')})`,
+            (st, accent) => `중빠밤빠${"바".random(3, 5)}밤빠${"바".random(5, 7)}`,
+            (st, accent) => st + `뽀롱${`뽀${"로".random(5, 8)}롱`.random(2, 4)}` + accent('long'),
+            (st, accent) => st + ["달그닥", "달그락","뽀득뽀득"].random({ st: 7, en: 10 }) + "쨍그랑" + accent("bold"),
+            (st, accent) => st + ["덜컹", "덜커덩"].random({ st: 7, en: 10 }) + "부르릉" + accent("long"),
+            (st, accent) => st + ["사부작", "사각", "사그작"].random({ st: 7, en: 10 }) + "빠지직" + accent("bold"),
+            (st, accent) => st + "쓱싹".random(8, 10),
+            (st, accent) => st + ["후루룹", "후루루루루룹", "쩝쩝"].random({ st: 7, en: 10 }),
+            (st, accent) => st + ["덩실", "뒤뚱", "파닥"].map(str => str.random(8, 10)).random() + accent(),
+            (st, accent) => st + ["우르릉", "쾅쾅"].random({ st: 7, en: 10 }) + accent("bold"),
+            (st, accent) => st + [()=>`푸${"드".random(0, 3)}득`,()=>`뿌${"지".random(0, 3)}직`].random({ st: 7, en: 10,exe:true }) + accent("bold"),
+            () => [`<iframe width='280px' height='54px' src='https://m.dcinside.com/voice/player?vr=39a4c023b8c07eaf6ae2c5bc18d628384b845c721f21eb89039d0765f157b66cc8473666aa' frameborder='0' scrolling='no'></iframe>`,`<iframe width='280px' height='54px' src='https://m.dcinside.com/voice/player?vr=39a4c023b8c07eaf6ae2c5bc18d628384b845c721f21eb89039d0765f157b66aa6cce28887' frameborder='0' scrolling='no'></iframe>`].random(),
+            () => `출처: 중세게임 갤러리 [원본 보기]`,
+            (st, accent) => st + ["콜록","에취"].random({ st: 7, en: 10 }) + accent("bold"),
+            (st, accent) => st + `구리당당중당당${accent("bold")}구리구리당당중당당${accent("bold")}`,
+            (st, accent) => st + ["뜬","뜨든",()=>`뜨${["드"].random({st: 1, en: 3})}${['','','','',"뜬↗","든↘"].random()}`,`(뜨${"드".random(0,3)}든)`].random({ st: 7, en: 10,exe:true }) + accent("bold"),
+            (st, accent) => st+[()=>`휘${"이".random(0, 8)}잉`,()=>`휘${"이".random(0, 8)}용`].random({ st: 7, en: 10,exe:true }),
+            (st, accent) => st+[()=>`부${"르".random(0,5)}릉` + accent("bold")].random({ st: 7, en: 10,exe:true }) + `부${"아".random(0,5)}앙` + accent("bold"),
+            (st, accent) => st+["북","북","북","딱","딱","딱","예아","이기","매끼나라",`따${"다".random(0,2)}닥`].random({ st: 13, en: 15,exe:true }),
+            (st, accent) => "중 끼 얏 호 우 ",
+            () => "중하바라밀다심경"+['마하반야바라밀다심경', '관자재보살', '행심반야바라밀다시', '조견오온개공', '도일체고액', '사리자', '색불이공', '공불이색', '색즉시공', '공즉시색', '수상행식', '역부여시', '사리자', '시제법공상', '불생불멸', '불구부정', '부증불감', '시고', '공중무색', '무수상행식', '무안이비설신의', '무색성향미촉법', '무안계', '내지', '무의식계', '무무명', '역무무명진', '내지', '무노사', '역무노사진', '무고집멸도', '무지', '역무득', '이무소득고', '보리살타', '의반야바라밀다', '고심무가애', '무가애고', '무유공포', '원리전도몽상', '구경열반', '삼세제불의반야바라밀다', '고득아뇩다라삼먁삼보리', '고지반야바라밀다', '시대신주', '시대명주', '시무상주', '시무등등주', '능제일체고', '진실불허', '고설반야바라밀다주', '즉설주왈', '아제아제', '바라아제', '바라승아제', '모지', '사바하'].map(v => "중" + v.slice(1)).random({ st: 7, en: 10,exe:true }),
+            (st) => `중${["항","핳"].random({st:7,st:10})}ꉂꉂ(ᵔᗜᵔ*)${"ㅋ".random(4,5)}${["🌊","🚢","⚓"].random({st: 3, en: 3})}`,
+            (st) => `딩딩딩~중모닝~${"빠".random(7,10)}(중모닝)${[() => "빠".random(3,4),"딩".random(3,5)].random({st:7,st:10,exe:true})}잇츠뷰리풀데이~`,
+            (st) => st + "도키도키시테타☆ ",
+            (st) => "쭝쓰!쭝쓰!쭝쓰".repeat(2)+"중중따리중중따!근근따리근근따!",
+            (st,accent) => `${st}기당권${accent("long")}토우${accent("bold")}`,
+            (st) => st + ["훠","쭵"].random({st:10,st:15}),
+            (st,accent) => st + `따리샤바라빠빠빠${accent("long")}${"빠".repeat(8)}${accent("long")}`,
+            (st) => st + ["택배입니다","문열어주세요","문열어요"].random()+ ["띵동","쾅","철컥"].random({st:8,en:15}),
+            (st) => `우리는중리웹JUNGGUNWEB${["라이라이차차차",`${st}빠빠리빠`].random({st:2,en:2})}싸워서이기고지면은죽어라${st}헤이빠빠리빠부라보!부라보!중근웹!`
+        ]
+        function accent(type = "default") {
+            let rtnType = {
+                long: "~".random(3, 5),
+                bold: "!".random(3, 5),
+                default: "~".random(3, 5) + "!".random(3, 5),
+                hatena: "?".random(3, 5),
+            }
+            return rtnType[type]
+        }
+
+        let make = (isRandom = true) => {
+            let junghaha = ""
+            let targetha = isRandom ? ha.random({exe:false}) : ha[ha.length - 1]
+            while (junghaha.length < 400 && !junghaha.match(/iframe/)) junghaha += targetha(jung.random({ exe: true }), accent)
+            return junghaha
+        }
+        make(false)
+        $("#make").on("click", function () {
+            $(".output-wrap").removeClass("hide")
+            let txt = make(true);
+            
+            $("#output").text(txt).val(txt)
+            M.textareaAutoResize($("#output"));
+            $("#copy").removeAttr("disabled");
+        })
+        $("#copy").on("click", function () {
+            $("#output").select()
+            document.execCommand("copy");
+            $("#output").prop('selectionStart', 0).prop('selectionEnd',0).blur();
+            M.toast({ html: "복사 완료" })
+        })
+        $("#output").on("focus", function () {
+            $("#output").select()
+            $("#output").select()
+        })
+    </script>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-98BTSYEN5S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-98BTSYEN5S');
+    </script>
+</body>
+
+</html>
